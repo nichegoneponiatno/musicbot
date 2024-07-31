@@ -23,7 +23,7 @@ func New(host string, token string) *Client {
 	}
 }
 
-func (c *Client) Updates(offset int, limit int) ([]Update, error) {
+func (c Client) Updates(offset int, limit int) ([]Update, error) {
 
 	query := url.Values{}
 	query.Add("offset", strconv.Itoa(offset))
@@ -43,7 +43,19 @@ func (c *Client) Updates(offset int, limit int) ([]Update, error) {
 	return result.Result, nil
 }
 
-func (c *Client) Request(metod string, query url.Values) ([]byte, error) {
+func (c Client) SendMessages(chatId int, text string) error {
+	query := url.Values{}
+	query.Add("chat_id", strconv.Itoa(chatId))
+	query.Add("text", text)
+
+	_, err := c.Request("sendMessage", query)
+	if err != nil {
+		return err
+	}
+	return err
+}
+
+func (c Client) Request(metod string, query url.Values) ([]byte, error) {
 
 	url := url.URL{
 		Scheme: "https",
