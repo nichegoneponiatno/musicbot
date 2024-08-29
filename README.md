@@ -1,4 +1,4 @@
-`
+```mermaid
 classDiagram
     class Issue {
         <<Abstract>>
@@ -97,4 +97,4 @@ classDiagram
     style Status fill:#ffb,stroke:#663,stroke-width:2px,color:#000,stroke-dasharray: 5 5
     style Severity fill:#ffb,stroke:#663,stroke-width:2px,color:#000,stroke-dasharray: 5 5
 
-`
+```
